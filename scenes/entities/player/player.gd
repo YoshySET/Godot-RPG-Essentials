@@ -9,11 +9,12 @@ enum State {
 }
 
 @export_category("Stats")
-@export var speed := 400
-@export var attack_speed := 0.6
+@export var speed: int = 400
+@export var attack_speed: float = 0.6
+@export var attack_damage: int = 60
 
-var state := State.IDLE
-var move_direction := Vector2.ZERO
+var state: State = State.IDLE
+var move_direction: Vector2 = Vector2.ZERO
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_playback: AnimationNodeStateMachinePlayback = $AnimationTree["parameters/playback"]
@@ -29,6 +30,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	if not state == State.ATTACK:
 		movement_loop()
+	$Label.text = str($HitBox.monitoring)
+	print($HitBox.monitoring)
 	
 
 func movement_loop() -> void:
@@ -75,3 +78,9 @@ func attack():
 	
 	await get_tree().create_timer(attack_speed).timeout
 	state = State.IDLE
+
+
+func _on_hit_box_area_entered(area: Area2D) -> void:
+	area.owner.take_damage(attack_damage)
+	
+	
