@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Godot RPG Essentials"
+run/main_scene="uid://dmwc1bkr5bkvg"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
