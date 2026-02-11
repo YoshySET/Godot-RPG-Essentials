@@ -46,4 +46,9 @@ func about_open(_origin: String) -> void:
 	
 	
 func exit_game(_origin: String) -> void:
+	print(OS.get_name())
+	if OS.get_name() == "iOS":
+		print("IOS exit")
+		OS.kill(OS.get_process_id())
+		return
 	get_tree().quit()
