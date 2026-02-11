@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 		#player = get_tree().get_first_node_in_group("player")
 		#print("not player")
 		#return
-	$Label.text = "%s <%s>" % [hitpoints, State.keys()[state]]
+	$Label.text = "%s" % [hitpoints]
 	if state == State.DEAD:
 		return
 	if state == State.ATTACK:

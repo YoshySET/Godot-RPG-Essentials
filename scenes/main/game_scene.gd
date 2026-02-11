@@ -8,6 +8,7 @@ var total_enemies: int
 var killed_enemies: int = 0
 
 @onready var HUD: Control = $UI/HUD
+@onready var attack_button: BaseButton = $UI/AttackButton
 
 func _ready() -> void:
 	var enemy_array: Array = get_tree().get_nodes_in_group("enemies")
@@ -16,6 +17,7 @@ func _ready() -> void:
 		i.died.connect(enemy_died)
 		
 	var player: CharacterBody2D = get_tree().get_first_node_in_group("player")
+	attack_button.pressed.connect(player.attack)
 	levelup.connect(player.calculate_stats)
 	player.game_over.connect(display_end_game_screen)
 	player.update_hp_bar.connect(HUD.update_hp_bar)
@@ -45,6 +47,7 @@ func level_up(new_experience: int) -> void:
 	#PlayerData.experience = new_experience
 	experience_gained(new_experience)
 	levelup.emit()
+	HUD.update_level_indicator()
 	
 	
 func display_end_game_screen(victorious: bool) -> void:

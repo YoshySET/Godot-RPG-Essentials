@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://d1s23p8dn0ay1" path="res://assets/ui/elements/Carved_3Slides.png" id="4_ynmmy"]
 [ext_resource type="Texture2D" uid="uid://by2tr4oqf3u47" path="res://assets/ui/elements/Banner_Connection_Up.png" id="5_o41ig"]
 [ext_resource type="FontFile" uid="uid://d00h4ctsh5ohj" path="res://assets/fonts/PirataOne-Regular.ttf" id="6_wktqh"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="8_wktqh"]
+[ext_resource type="Texture2D" uid="uid://dd5chn7mty8ao" path="res://assets/ui/buttons/Button_Blue_3Slides.png" id="9_17w4u"]
+[ext_resource type="Texture2D" uid="uid://t6ugsh3rd7ag" path="res://assets/ui/buttons/Button_Blue_3Slides_Pressed.png" id="10_2kpdr"]
+[ext_resource type="Texture2D" uid="uid://cmlad2duqiucq" path="res://assets/ui/buttons/Icon_05.png" id="11_x5m58"]
 
 [node name="GameScene" type="Node2D" unique_id=1202768375]
 script = ExtResource("1_rfwcf")
@@ -58,7 +62,7 @@ offset_right = 245.0
 offset_bottom = 254.0
 texture = ExtResource("5_o41ig")
 
-[node name="Label" type="Label" parent="UI/HUD/LevelIndicator" unique_id=425199530]
+[node name="CurrentLevel" type="Label" parent="UI/HUD/LevelIndicator" unique_id=425199530]
 custom_minimum_size = Vector2(0, 120)
 layout_mode = 1
 anchors_preset = 8
@@ -81,3 +85,41 @@ theme_override_font_sizes/font_size = 60
 text = "-"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Virtual joystick left" parent="UI" unique_id=1079277985 instance=ExtResource("8_wktqh")]
+offset_left = 160.0
+offset_top = -410.0
+offset_right = 460.0
+offset_bottom = -110.0
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_up"
+action_down = "move_down"
+
+[node name="AttackButton" type="TextureButton" parent="UI" unique_id=1145048518]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -511.0
+offset_top = -328.0
+offset_right = -211.0
+offset_bottom = -168.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("9_17w4u")
+texture_pressed = ExtResource("10_2kpdr")
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="UI/AttackButton" unique_id=1764910813]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_top = 28.0
+offset_right = 32.0
+offset_bottom = 92.0
+grow_horizontal = 2
+texture = ExtResource("11_x5m58")

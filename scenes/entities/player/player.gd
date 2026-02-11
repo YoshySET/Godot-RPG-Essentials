@@ -17,6 +17,7 @@ enum State {
 
 var state: State = State.IDLE
 var move_direction: Vector2 = Vector2.ZERO
+var last_facing_dir: Vector2 = Vector2.RIGHT
 var attack_speed: float
 var hitpoins_max: int
 
@@ -47,6 +48,10 @@ func calculate_stats() -> void:
 func movement_loop() -> void:
 	move_direction.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	move_direction.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
+
+	if move_direction != Vector2.ZERO:
+		last_facing_dir = move_direction.normalized()
+
 	var motion := move_direction.normalized() * speed
 	set_velocity(motion)
 	move_and_slide()
@@ -80,8 +85,9 @@ func attack():
 		return
 	state = State.ATTACK
 	
-	var mouse_pos := get_global_mouse_position()
-	var attack_dir := (mouse_pos - global_position).normalized()
+	var attack_dir := move_direction.normalized() if move_direction != Vector2.ZERO else last_facing_dir
+	if attack_dir == Vector2.ZERO:
+		attack_dir = Vector2.RIGHT
 	$Sprite2D.flip_h = attack_dir.x < 0 and abs(attack_dir.x) >= abs(attack_dir.y)
 	animation_tree.set("parameters/attack/BlendSpace2D/blend_position", attack_dir)
 	update_animation()

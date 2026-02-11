@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://t6ugsh3rd7ag" path="res://assets/ui/buttons/Button_Blue_3Slides_Pressed.png" id="2_m1kxf"]
 [ext_resource type="Texture2D" uid="uid://crpe6wlm1i2bo" path="res://assets/ui/buttons/Button_Hover_3Slides.png" id="3_x2yvf"]
 [ext_resource type="FontFile" uid="uid://d00h4ctsh5ohj" path="res://assets/fonts/PirataOne-Regular.ttf" id="4_m1kxf"]
+[ext_resource type="PackedScene" uid="uid://dcsrc1e6cj7qm" path="res://scenes/maps/main_menu_background.tscn" id="6_uhagc"]
 
 [node name="MainMenu" type="Control" unique_id=612675122]
 layout_mode = 3
@@ -15,9 +16,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x2yvf")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=191484864]
+[node name="TestMap" parent="." unique_id=1540684573 instance=ExtResource("6_uhagc")]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1511272775]
+z_index = 5
 layout_mode = 0
-offset_right = 600.0
+offset_right = 700.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.47058824)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=191484864]
+z_index = 5
+layout_mode = 0
+offset_right = 700.0
 offset_bottom = 1080.0
 theme_override_constants/separation = 25
 alignment = 1
