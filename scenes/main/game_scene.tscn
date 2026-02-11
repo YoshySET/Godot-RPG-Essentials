@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://c0u2crkl7fq7p"]
+
+[ext_resource type="Script" uid="uid://du5ffh0kj6mhm" path="res://scenes/main/game_scene.gd" id="1_rfwcf"]
+[ext_resource type="PackedScene" uid="uid://dlxifwkjxievx" path="res://scenes/maps/test_map.tscn" id="1_sdya7"]
+[ext_resource type="PackedScene" uid="uid://cygqdodv2cfvk" path="res://scenes/ui/end_game_screen.tscn" id="2_5odut"]
+[ext_resource type="Script" uid="uid://ch1lxf8tlw22k" path="res://scenes/main/hud.gd" id="4_o41ig"]
+[ext_resource type="Texture2D" uid="uid://d1s23p8dn0ay1" path="res://assets/ui/elements/Carved_3Slides.png" id="4_ynmmy"]
+[ext_resource type="Texture2D" uid="uid://by2tr4oqf3u47" path="res://assets/ui/elements/Banner_Connection_Up.png" id="5_o41ig"]
+[ext_resource type="FontFile" uid="uid://d00h4ctsh5ohj" path="res://assets/fonts/PirataOne-Regular.ttf" id="6_wktqh"]
+
+[node name="GameScene" type="Node2D" unique_id=1202768375]
+script = ExtResource("1_rfwcf")
+end_game_screen_packed = ExtResource("2_5odut")
+
+[node name="TestMap" parent="." unique_id=1540684573 instance=ExtResource("1_sdya7")]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1503622181]
+
+[node name="HUD" type="Control" parent="UI" unique_id=1983503245]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_o41ig")
+
+[node name="Hitpoints" type="TextureRect" parent="UI/HUD" unique_id=851386509]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 50.0
+offset_right = 470.0
+offset_bottom = 120.0
+texture = ExtResource("4_ynmmy")
+
+[node name="HitpointsBar" type="TextureProgressBar" parent="UI/HUD/Hitpoints" unique_id=1506576545]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -27.5
+offset_right = 190.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+nine_patch_stretch = true
+texture_progress = ExtResource("4_ynmmy")
+tint_progress = Color(0.23333335, 1, 0, 1)
+
+[node name="LevelIndicator" type="TextureRect" parent="UI/HUD" unique_id=375958456]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 53.0
+offset_top = 62.0
+offset_right = 245.0
+offset_bottom = 254.0
+texture = ExtResource("5_o41ig")
+
+[node name="Label" type="Label" parent="UI/HUD/LevelIndicator" unique_id=425199530]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.5
+offset_top = -60.0
+offset_right = 83.5
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/font = ExtResource("6_wktqh")
+theme_override_font_sizes/font_size = 60
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1

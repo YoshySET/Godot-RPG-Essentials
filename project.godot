@@ -11,14 +11,24 @@ config_version=5
 [application]
 
 config/name="Godot RPG Essentials"
-run/main_scene="uid://dlxifwkjxievx"
+run/main_scene="uid://bx4mylyll80ik"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+PlayerData="*uid://ckg2o8bwkkr0i"
+LevelData="*uid://deerwgt54mgml"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+
+[global_group]
+
+player=""
+enemies=""
 
 [input]
 
