@@ -6,6 +6,7 @@ extends Node
 
 
 func _ready() -> void:
+	PlayerData.load_player_data_binary()
 	load_main_menu("game_start")
 	
 
@@ -13,6 +14,8 @@ func load_main_menu(origin: String) -> void:
 	match origin:
 		"end_game_screen":
 			get_node("GameScene").queue_free()
+			PlayerData.save_player_data_binary()
+			PlayerData.save_player_data_json()
 			
 	var main_menu: Control = main_menu_packed.instantiate()
 	main_menu.new_game_pressed.connect(new_game)

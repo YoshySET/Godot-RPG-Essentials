@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ccho8h3d5fyu8"]
+
+[ext_resource type="Script" uid="uid://ccb4hnwjm21j4" path="res://scripts/classes/file_handler.gd" id="1_n50bg"]
+
+[node name="FileHandler" type="Node" unique_id=199414490]
+script = ExtResource("1_n50bg")
